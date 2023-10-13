@@ -1,0 +1,101 @@
+<div class="payment-container">
+  <div class="logo">LOGO</div>
+  <div class="forms-main">
+    <div class="form-1">
+      <h3>Subscribe</h3>
+      <h5>to our Monthly Surprise Box</h5>
+      <h4>Contact Information</h4>
+
+      <label>Your Name</label>
+      <input type="text" placeholder="e.g Osama Alshathri">
+      <label>Email</label>
+      <input type="email" placeholder="Osama@gmail.com">
+      <h4 class="mt-0">Child’s Information</h4>
+      <label>Child’s Full Name</label>
+      <input type="text" placeholder="e.g Sarah Mohammad">
+      <label>Child’s Date of Birth</label>
+      <div class="date-child">
+        <select>
+          <option value="" disabled selected>Date</option>
+          <option *ngFor="let option of dateOptions" [value]="option">{{ option }}</option>
+        </select>
+        <select>
+          <option value="" disabled selected>Month</option>
+          <option *ngFor="let option of monthOptions" [value]="option">{{ option }}</option>
+        </select>
+        <select>
+          <option value="" disabled selected>Year</option>
+          <option *ngFor="let option of yearOptions" [value]="option">{{ option }}</option>
+        </select>
+      </div>
+      <label>Grade</label>
+      <select class="grade">
+        <option value="" disabled selected>e.g Grade 2</option>
+        <option *ngFor="let option of gradeOptions" [value]="option">{{ option }}</option>
+      </select>
+      <label>Gender</label>
+      <div class="gender">
+        <div [ngClass]="{'selected-gender': isGenderSelected('Boy')}" (click)="selectGender('Boy')">
+          <span>Boy</span>
+          <img [src]="getGenderFieldIcon('Boy')" alt="" />
+        </div>
+        <div [ngClass]="{'selected-gender': isGenderSelected('Girl')}" (click)="selectGender('Girl')">
+          <span>Girl</span>
+          <img [src]="getGenderFieldIcon('Girl')" alt="" />
+        </div>
+      </div>
+      <h4 class="mt-0">As a parent select any 3 topics</h4>
+      <div class="topics-container">
+        <div [ngClass]="{'check': isTopicSelected('Arabic')}" (click)="selectTopic('Arabic')">Arabic</div>
+        <div [ngClass]="{'check': isTopicSelected('Islamic')}" (click)="selectTopic('Islamic')">Islamic</div>
+        <div [ngClass]="{'check': isTopicSelected('English')}" (click)="selectTopic('English')">English</div>
+        <div [ngClass]="{'check': isTopicSelected('History')}" (click)="selectTopic('History')">History</div>
+        <div [ngClass]="{'check': isTopicSelected('Sports')}" (click)="selectTopic('Sports')">Sports</div>
+      </div>
+      <button (click)="handleSubmit()">Continue to payment</button>
+    </div>
+    <div class="summary">
+      <h3>Summary</h3>
+      <h5>of your Monthly Surprise Box</h5>
+      <div class="mystryBox">
+        <div>
+          <h4>Mystery Box </h4>
+          <span>X 1</span>
+        </div>
+        <div>
+          <h4>
+            <h5>SAR</h5> 456
+          </h4>
+          <span>Monthly</span>
+        </div>
+      </div>
+      <div class="subtotal">
+        <h5>Subtotal</h5>
+        <h4>
+          <h5>SAR</h5> 456
+        </h4>
+      </div>
+      <div class="shipping">
+        <h5>Shipping</h5>
+        <span>Free</span>
+      </div>
+      <div class="subtotal">
+        <h5>Taxes</h5>
+        <h4>
+          <h5>SAR</h5> 4.0
+        </h4>
+      </div>
+      <hr>
+      <div class="subtotal">
+        <h5>Total</h5>
+        <h4>
+          <h5>SAR</h5> 456
+          <span class="status">Monthly</span>
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ion-alert [isOpen]="isAlertOpen" [subHeader]="alertHeading" [message]="alertMessage" [buttons]="alertButtons"
+  (didDismiss)="setIsAlertOpen(false)"></ion-alert>
